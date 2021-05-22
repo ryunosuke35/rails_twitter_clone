@@ -1,19 +1,48 @@
-<%= form_with(model: @post, local: true, url: choose_new_or_edit ) do |form| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @post.errors.count %>件のエラーがあります。</h2>
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header clearfix">
+      <nav>
+        <ul class="top_menu clearfix">
+          <li>ホーム</li>
+          <li>メッセージ</li>
+          <li>プロフィール</li>
+          <li>設定</li>
+        </ul>
+      </nav>
+    </header>
+    <%= image_tag 'twitter.png', class:'icon' %>
+    <div class="wrapper clearfix">
+
+      <%= form_with(model: @post, local: true, url: choose_new_or_edit ) do |form| %>
+      <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @post.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
       <% end %>
-      </ul>
+
+      <div class="post_content">
+        <%= form.label :content %>
+        <%= form.text_field :content %>
+      </div>
+      <%= form.submit %>
+
+      <% end %>
+
     </div>
-   <% end %>
-
-  <div class="post_content">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <footer class="footer">
+      <p>twitter_clone</p>
+    </footer>
   </div>
-  <%= form.submit %>
-
-<% end %>
+</body>
+</html>

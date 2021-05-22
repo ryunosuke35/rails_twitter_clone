@@ -1,7 +1,36 @@
-<h3>以下の内容でツイートしますか?</h3>
-<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
-  <%= form.hidden_field :content %>
-  <p>本文:<%= @post.content %></p>
-  <%= form.submit "登録する" %>
-  <%= form.submit "戻る", name: 'back' %>
-<% end %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header clearfix">
+      <nav>
+        <ul class="top_menu clearfix">
+          <li>ホーム</li>
+          <li>メッセージ</li>
+          <li>プロフィール</li>
+          <li>設定</li>
+        </ul>
+      </nav>
+    </header>
+    <%= image_tag 'twitter.png', class:'icon' %>
+    <div class="wrapper clearfix">
+
+      <h3>以下の内容でツイートしますか?</h3>
+      <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+      <%= form.hidden_field :content %>
+      <p>本文:<%= @post.content %></p>
+      <%= form.submit "登録する" %>
+      <%= form.submit "戻る", name: 'back' %>
+      <% end %>
+
+    </div>
+    <footer class="footer">
+      <p>twitter_clone</p>
+    </footer>
+  </div>
+</body>
+</html>
